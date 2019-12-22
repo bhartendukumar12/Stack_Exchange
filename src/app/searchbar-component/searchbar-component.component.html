@@ -19,7 +19,6 @@
   <div *ngFor="let element of lastFiveResults; let i=index">
     <div class="recent-search-result">Question {{i+1}}:<span [innerHTML]="element?.title" (click)="reacentSearchMethod(element)"></span></div>
   </div>
-  
 </div>
 
 <div class="container" *ngIf="searchResults?.length>0 && isQuestionsLoaded">
