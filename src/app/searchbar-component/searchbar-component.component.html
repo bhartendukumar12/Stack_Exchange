@@ -1,0 +1,76 @@
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>
+
+<div class="search-box">
+  <input id="input" class="search-input-box" type="text" size="30" pInputText [(ngModel)]="userInput">
+  <button class="grid--cell s-btn s-btn_primary" (click)="getResult()">Search</button>
+</div>
+
+<div *ngIf="lastFiveResults.length>0" class="recent-search">
+  <h3>Recent Search:</h3>
+  <div *ngFor="let element of lastFiveResults; let i=index">
+    <div class="recent-search-result">Question {{i+1}}:<span [innerHTML]="element?.title" (click)="reacentSearchMethod(element)"></span></div>
+  </div>
+</div>
+
+<div class="container" *ngIf="searchResults?.length>0 && isQuestionsLoaded">
+  <div *ngFor="let result of searchResults; let i=index" class="border-box">
+    <div class="row question-container">
+      <div class="col-md-1 statscontainer">
+        <div class="stats">
+          <div class="votes">
+            <span class="count-post "><strong>{{result?.score}}</strong></span>
+            <div class="stat-label">votes</div>
+          </div>
+          <div [ngClass]="{'status-answered': result?.answer_count > 0 }">
+            <span class="count-post "><strong>{{result?.answer_count}}</strong></span>
+            <div class="stat-label">answers</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-11 question-details">
+        <p class="questionTitle" [innerHTML]="result?.title" (click)="navigateToAnswer(result)"></p>
+        <!-- <p class="questionDescription" [innerHTML]="result?.excerpt"></p> -->
+        <div class="questionDescription" [innerHTML]="result?.excerpt"></div>
+        <div class="row tags">
+          <div *ngFor="let tag of result?.tags; let i=index">
+            <div class="border-box tag-box col-md-3"> {{tag}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="!isQuestionsLoaded">
+    <p class="questionTitle" [innerHTML]="answerResults?.title" ></p>
+    <div *ngFor="let result of answerResults?.answers; let i=index">
+      <div class="row question-container">
+        <div class="col-md-12 question-details">
+            <h5>Answers : </h5>
+          <div class="questionDescription" [innerHTML]="result?.body"></div>
+          <div class="row " *ngIf="result?.comments?.length>0">
+              <h5>Comments : </h5>
+            <div *ngFor="let element of result?.comments; let i=index">
+              <div class="questionDescription" [innerHTML]="element?.body"></div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container" *ngIf="searchResults?.length==0">
+  <h3 class="empty-result"> No Result found for your search query</h3>
+</div>
+

@@ -1,18 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SearchbarComponentComponent } from './searchbar-component/searchbar-component.component';
+import { AnswerComponentComponent } from './answer-component/answer-component.component';
+import {InputTextModule} from 'primeng/inputtext';
+import { commonService } from './common-service';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchbarComponentComponent,
+    AnswerComponentComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AppRoutingModule,
+    InputTextModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [commonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
