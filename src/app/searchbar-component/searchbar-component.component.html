@@ -54,14 +54,13 @@
     <p class="questionTitle" [innerHTML]="answerResults?.title" ></p>
     <div *ngFor="let result of answerResults?.answers; let i=index">
       <div class="row question-container">
-        <div class="col-md-12 question-details">
-            <h5>Answers : </h5>
+        <div class="col-md-12 answer-details">
+            <h4>Answer : </h4>
           <div class="questionDescription" [innerHTML]="result?.body"></div>
-          <div class="row " *ngIf="result?.comments?.length>0">
-              <h5>Comments : </h5>
+          <div *ngIf="result?.comments?.length>0">
+              <h4>Comments : </h4>
             <div *ngFor="let element of result?.comments; let i=index">
-              <div class="questionDescription" [innerHTML]="element?.body"></div>
-              <hr>
+              <div class="comments-body" [innerHTML]="element?.body"></div>
             </div>
           </div>
         </div>
@@ -70,7 +69,7 @@
   </div>
 
 
-<div class="container" *ngIf="searchResults?.length==0 || answerResults?.comment_count==0">
+<div class="container" *ngIf="!isSearchResultAvlbl ">
   <h3 class="empty-result"> No Result found for your search query</h3>
 </div>
 
