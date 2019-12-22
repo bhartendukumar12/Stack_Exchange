@@ -21,6 +21,7 @@
     "@angular/router": "~8.2.9",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
+    "ngx-spinner": "6.0.0",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.0-rc.2",
     "rxjs": "~6.4.0",
