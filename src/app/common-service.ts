@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable , EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -18,6 +18,19 @@ export class commonService {
         let url='https://cors-anywhere.herokuapp.com/https://api.stackexchange.com/2.2/questions/'+questionId+'?order=desc&sort=activity&site=stackoverflow&filter=!-y(KwOdKR5Ga7mmruVArx2SJykc-M)3jKiDQBk1fq'
         return this.http.get(url).pipe(map((res: any) => res));
 
+      }
+
+
+      searchTermUpdated:EventEmitter<any> = new EventEmitter<any>();
+      setSearchTerm(searchTerm){
+          this.searchTermUpdated.emit(searchTerm);
+      }
+
+      searchTerm:any;
+
+      lastresultsUpdated:EventEmitter<any> = new EventEmitter<any>();
+      setlastResults(searchTerm){
+          this.lastresultsUpdated.emit(searchTerm);
       }
 }
 

@@ -1,0 +1,30 @@
+
+
+
+<div class="container" *ngIf="!isQuestionsLoaded">
+    <p class="questionTitle" [innerHTML]="answerResults?.title" ></p>
+    <div *ngFor="let result of answerResults?.answers; let i=index">
+      <div class="row question-container">
+        <div class="col-md-12 answer-details">
+            <h4>Answer : </h4>
+          <div class="questionDescription" [innerHTML]="result?.body"></div>
+          <div *ngIf="result?.comments?.length>0">
+              <h4>Comments : </h4>
+            <div *ngFor="let element of result?.comments; let i=index">
+              <div class="comments-body" [innerHTML]="element?.body"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+<div class="container" *ngIf="!isSearchResultAvlbl ">
+  <h3 class="empty-result"> No Result found for your search query</h3>
+</div>
+
+
+<ngx-spinner bdColor="rgba(51,51,51,0.24)" size="default" color="#343c6b" type="ball-grid-beat"
+      loadingText='Loading ...'></ngx-spinner>

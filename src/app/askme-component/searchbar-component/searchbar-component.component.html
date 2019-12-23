@@ -9,18 +9,6 @@
   }
 </style>
 
-<div class="search-box">
-  <input id="input" class="search-input-box" type="text" size="30" pInputText [(ngModel)]="userInput">
-  <button class="grid--cell s-btn s-btn_primary" (click)="getResult()">Search</button>
-</div>
-
-<div *ngIf="lastFiveResults.length>0" class="recent-search">
-  <h3>Recent Search:</h3>
-  <div *ngFor="let element of lastFiveResults; let i=index">
-    <div class="recent-search-result">Question {{i+1}}:<span [innerHTML]="element?.title" (click)="reacentSearchMethod(element)"></span></div>
-  </div>
-</div>
-
 <div class="container" *ngIf="searchResults?.length>0 && isQuestionsLoaded">
   <div *ngFor="let result of searchResults; let i=index" class="border-box">
     <div class="row question-container">
@@ -50,7 +38,7 @@
   </div>
 </div>
 
-<div class="container" *ngIf="!isQuestionsLoaded">
+<!-- <div class="container" *ngIf="!isQuestionsLoaded">
     <p class="questionTitle" [innerHTML]="answerResults?.title" ></p>
     <div *ngFor="let result of answerResults?.answers; let i=index">
       <div class="row question-container">
@@ -66,7 +54,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 <div class="container" *ngIf="!isSearchResultAvlbl ">

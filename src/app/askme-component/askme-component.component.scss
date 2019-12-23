@@ -1,0 +1,35 @@
+.search-box {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-input-box {
+    width: 708px;
+    height: 32px;
+}
+
+.s-btn {
+    position: relative;
+    display: inline-block;
+    padding: .8em;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    background-color: transparent;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.15384615;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #0077cc;
+    margin-left: 6px;
+    height: 35px;
+}
+
+.s-btn_primary {
+    color: #fff;
+    background-color: #0095ff;
+    box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.4);
+}

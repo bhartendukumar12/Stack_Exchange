@@ -1,0 +1,24 @@
+
+
+<div class="search-box">
+    <input id="input" class="search-input-box" type="text" size="30" pInputText [(ngModel)]="userInput">
+    <button class="grid--cell s-btn s-btn_primary" (click)="search()">Search</button>
+  </div>
+  
+  <div *ngIf="recentSearchTerms.length>0" class="recent-search">
+    <h3 >Recent Search:</h3>
+    <div *ngFor="let element of recentSearchTerms; let i=index">
+      <div class="recent-search-result">Question {{i+1}}:<span [innerHTML]="element" (click)="reacentSearchMethod(element,i)"></span></div>
+    </div>
+  </div>
+
+  <div *ngIf="router.url.includes('question')">
+    <app-searchbar-component></app-searchbar-component>
+  </div>
+
+  
+  <div *ngIf="router.url.includes('answer')">
+    <app-answer-component></app-answer-component>
+  </div>
+
+
