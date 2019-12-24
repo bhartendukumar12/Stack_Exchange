@@ -32,7 +32,12 @@ export class commonService {
       setlastResults(searchTerm){
           this.lastresultsUpdated.emit(searchTerm);
       }
+
+      storedResults:any=[];
+
+      isStoreResultsClicked:boolean=false;
+
+      lastStoredResultsParams={index:null , searchTerm:null }
 }
 
 
-// /2.2/questions/59277859?order=desc&sort=activity&site=stackoverflow&filter=!-y(KwOdKR5Ga7mmruVArx2SJykc-M)3jKiDQBk1fq

@@ -14,7 +14,7 @@ import { AnswerComponentComponent } from './askme-component/answer-component/ans
 
 const Routes: Routes = [	
     {
-      path: 'home',
+      path: 'search',
       component: AskmeComponentComponent,
 
       children: [
@@ -24,13 +24,13 @@ const Routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/search',
     pathMatch: 'full'
     },
    
     {
       path: "**",
-      redirectTo: "/home",
+      redirectTo: "/search",
       pathMatch: 'full'
   }
 ];
